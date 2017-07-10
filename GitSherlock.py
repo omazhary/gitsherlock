@@ -7,6 +7,7 @@ tools.
 
 import requests
 import argparse
+from bs4 import BeautifulSoup
 import json
 import time
 from urllib import urlencode
@@ -61,7 +62,6 @@ class GitSherlock:
             self.requests = 0
         # Perform the request:
         gh_query = self.gh_request + endpoint
-        gh_uri = "%s?%s" % (gh_query, urlencode(parameters))
         header_type = ''
         if data_type.lower() == "diff":
             header_type = 'application/vnd.github.diff'
@@ -69,12 +69,18 @@ class GitSherlock:
             header_type = 'application/vnd.github.patch'
         else:
             header_type = 'application/vnd.github+json'
-        gh_json_result = requests.request(
-                method, gh_uri, auth=(self.user, self.token),
-                headers={'Accept': header_type}
-                )
-        if self.target == "WEB":
-            self.result = gh_json_result.status_code
+        if self.target == "API":
+            gh_uri = "%s?%s" % (gh_query, urlencode(parameters))
+            gh_json_result = requests.request(
+                    method, gh_uri, auth=(self.user, self.token),
+                    headers={'Accept': header_type}
+                    )
+        elif self.target == "WEB":
+            gh_uri = "%s" % (gh_query)
+            gh_result = requests.get(gh_uri)
+            soup = BeautifulSoup(gh_result.text.encode("utf8"),
+                                 'html.parser')
+            self.result = soup
         else:
             if data_type.lower() == 'std':
                 self.result = json.loads(gh_json_result.content)

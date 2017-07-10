@@ -75,17 +75,16 @@ class GitSherlock:
                     method, gh_uri, auth=(self.user, self.token),
                     headers={'Accept': header_type}
                     )
+            if data_type.lower() == 'std':
+                self.result = json.loads(gh_json_result.content)
+            else:
+                self.result = gh_json_result.content
         elif self.target == "WEB":
             gh_uri = "%s" % (gh_query)
             gh_result = requests.get(gh_uri)
             soup = BeautifulSoup(gh_result.text.encode("utf8"),
                                  'html.parser')
             self.result = soup
-        else:
-            if data_type.lower() == 'std':
-                self.result = json.loads(gh_json_result.content)
-            else:
-                self.result = gh_json_result.content
         self.requests += 1
         time.sleep(1)
 

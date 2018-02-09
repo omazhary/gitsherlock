@@ -10,6 +10,7 @@ setup(
         license='MIT',
         packages=['gitsherlock'],
         install_requires=[
+            'argparse',
             'bs4',
         ],
         zip_safe=False

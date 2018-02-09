@@ -44,7 +44,8 @@ class GitSherlock:
             self.tokenlist = []
             self.tokenlist.append(self.token)
 
-    def query(self, endpoint, parameters=dict(), method="GET", data_type="std"):
+    def query(self, endpoint, parameters=dict(), method="GET",
+              data_type="std"):
         """
         Queries the desired endpoint using the given parameters.
         :param endpoint: The GitHub endpoint to be queried.

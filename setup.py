@@ -13,5 +13,6 @@ setup(
             'argparse',
             'bs4',
         ],
+        scripts=['bin/gitsherlock'],
         zip_safe=False
 )

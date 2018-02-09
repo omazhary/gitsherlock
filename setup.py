@@ -9,5 +9,8 @@ setup(
         author_email='omazhary@gmail.com',
         license='MIT',
         packages=['gitsherlock'],
+        install_requires=[
+            'bs4',
+        ],
         zip_safe=False
 )

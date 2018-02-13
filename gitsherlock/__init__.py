@@ -8,7 +8,10 @@ from bs4 import BeautifulSoup
 import json
 import requests
 import time
-from urllib import urlencode
+try:
+    from urllib import urlencode
+except ImportError:
+    from urllib.parse import urlencode
 
 
 class GitSherlock:

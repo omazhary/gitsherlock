@@ -18,10 +18,12 @@ setup(
         license='MIT',
         classifiers=[
             'Development Status :: 3 - Alpha',
-            'Intended Audience :: Researchers',
-            'Topic :: Software Engineering Research :: Data Collection',
+            'Intended Audience :: Science/Research',
             'License :: OSI Approved :: MIT License',
-            'Programming Language :: Python :: 2.7'
+            'Natural Language :: English',
+            'Programming Language :: Python :: 2.7',
+            'Programming Language :: Python :: 3',
+            'Topic :: Scientific/Engineering :: Information Analysis',
         ],
         keywords='data collection scrape research',
         packages=find_packages(exclude=['contrib', 'docs', 'tests']),

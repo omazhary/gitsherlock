@@ -28,12 +28,9 @@ setup(
         install_requires=[
             'argparse',
             'bs4',
-            'json',
             'requests',
-            'time',
-            'urllib'
         ],
-        extras_require=[],
+        extras_require={},
         package_data={},
         data_files=[],
         scripts=[],

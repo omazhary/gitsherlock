@@ -7,7 +7,4 @@ Requirements
 ------------
 
 - bs4
-- json
 - requests
-- time
-- urllib

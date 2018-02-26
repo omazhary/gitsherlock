@@ -7,6 +7,7 @@ import argparse
 from bs4 import BeautifulSoup
 import json
 import requests
+import sys
 import time
 try:
     from urllib import urlencode
@@ -107,6 +108,8 @@ def main():
                         help='The output data format.')
     parser.add_argument('--target', metavar='r', type=str,
                         help='The request\'s target [API|WEB].')
+    parser.add_argument('--params', metavar='p', type=str,
+                        help='The request\'s parameters in json.')
 
     args = vars(parser.parse_args())
     endpoint = ""
@@ -129,9 +132,15 @@ def main():
         output = args['output']
     if args['target'] is not None:
         target = args['target']
+    if args['params'] is not None:
+        try:
+            parameters = json.loads(args['params'])
+        except ValueError:
+            print('You have not provided a valid json string!!')
+            sys.exit(1)
 
     scraper = GitSherlock(args['user'], args['token'], target=target)
-    scraper.query(endpoint, method=method)
+    scraper.query(endpoint, parameters=parameters, method=method)
 
     if target == "WEB":
         print(scraper.result)

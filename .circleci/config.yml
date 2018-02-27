@@ -7,8 +7,8 @@ jobs:
     steps:
       - checkout
       - run:
-        command: |
-          pip install virtualenv pew pipenv
+          command: |
+            pip install virtualenv pew pipenv
   deploy:
     only:
       - production

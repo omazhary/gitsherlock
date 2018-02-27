@@ -9,7 +9,7 @@ with open(path.join(here, 'README.rst'), encoding='utf-8') as f:
 
 setup(
         name='gitsherlock',
-        version='0.3',
+        version='0.4',
         description='A GitHub mining tool for research purposes.',
         long_description=long_description,
         url='https://github.com/omazhary/git-sherlock',

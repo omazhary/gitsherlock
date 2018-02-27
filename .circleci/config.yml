@@ -6,4 +6,13 @@ jobs:
     working_directory: ~/gitsherlock
     steps:
       - checkout
-      - run: echo "A first hello"
+      - run:
+        command: |
+          pip install virtualenv pew pipenv
+  deploy:
+    only:
+      - production
+    working_directory: ~/gitsherlock
+    steps:
+      - checkout
+      - run: echo "Hello!!"

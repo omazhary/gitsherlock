@@ -8,9 +8,11 @@ jobs:
       - checkout
       - run: pip install virtualenv pew pipenv
   deploy:
+    working_directory: ~/gitsherlock
+    docker:
+      - image: circleci/python:3.6.1
     only:
       - production
-    working_directory: ~/gitsherlock
     steps:
       - checkout
       - run: echo "Hello!!"

@@ -17,4 +17,15 @@ jobs:
       - run: echo '[pypi]' > ~/.pypirc
       - run: echo "username = $PYPIUSR" >> ~/.pypirc
       - run: echo "password = $PYPIPWD" >> ~/.pypirc
-
+workflows:
+  version: 2
+  seq-flow:
+    jobs:
+      - build
+      - deploy:
+          filters:
+            branches:
+              only:
+                - production
+          requires:
+            - build

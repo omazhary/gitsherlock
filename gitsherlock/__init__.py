@@ -79,7 +79,8 @@ class GitSherlock:
                     headers={'Accept': header_type}
                     )
             if data_type.lower() == 'std':
-                self.result = json.loads(gh_json_result.content)
+                content = gh_json_result.content.decode('utf-8')
+                self.result = json.loads(content)
             else:
                 self.result = gh_json_result.content
         elif self.target == "WEB":

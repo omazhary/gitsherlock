@@ -80,7 +80,12 @@ class GitSherlock:
                     )
             if data_type.lower() == 'std':
                 content = gh_json_result.content.decode('utf-8')
-                self.result = json.loads(content)
+                if content is not None and not content == '':
+                    self.result = json.loads(content)
+                else:
+                    self.result = json.loads(
+                            '{"message": "No result returned"}'
+                            )
             else:
                 self.result = gh_json_result.content
         elif self.target == "WEB":

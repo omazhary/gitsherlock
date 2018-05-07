@@ -23,9 +23,9 @@ jobs:
       - run: echo "password = $PYPIPWD" >> ~/.pypirc
       - run: sudo pip install virtualenv pew pipenv
       - run: pipenv install
-      - run: python setup.py sdist
-      - run: python setup.py bdist_wheel --universal
-      - run: twine upload dist/*
+      - run: pipenv run python setup.py sdist
+      - run: pipenv run python setup.py bdist_wheel --universal
+      - run: pipenv run twine upload dist/*
 workflows:
   version: 2
   seq-flow:

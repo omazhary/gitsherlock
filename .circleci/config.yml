@@ -1,10 +1,11 @@
 version: 2
-general:
-  branches:
-    ignore:
-      - gh-pages
 jobs:
   build:
+    branches:
+      only:
+        - dev
+        - master
+        - production
     docker:
       - image: circleci/python:3.6.1
     working_directory: ~/gitsherlock
@@ -13,9 +14,12 @@ jobs:
       - run: sudo pip install virtualenv pew pipenv
       - run: pipenv install
   deliver:
-    working_directory: ~/gitsherlock
+    branches:
+      only:
+        - production
     docker:
       - image: circleci/python:3.6.1
+    working_directory: ~/gitsherlock
     steps:
       - checkout
       - run: echo '[pypi]' > ~/.pypirc

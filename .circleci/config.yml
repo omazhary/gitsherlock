@@ -1,11 +1,6 @@
 version: 2
 jobs:
   build:
-    branches:
-      only:
-        - dev
-        - master
-        - production
     docker:
       - image: circleci/python:3.6.1
     working_directory: ~/gitsherlock
@@ -14,9 +9,6 @@ jobs:
       - run: sudo pip install virtualenv pew pipenv
       - run: pipenv install
   deliver:
-    branches:
-      only:
-        - production
     docker:
       - image: circleci/python:3.6.1
     working_directory: ~/gitsherlock
@@ -35,6 +27,12 @@ workflows:
   seq-flow:
     jobs:
       - build
+          filters:
+            branches:
+              only:
+                - dev
+                - master
+                - production
       - deliver:
           filters:
             branches:

@@ -21,6 +21,7 @@ jobs:
       - run: echo '[pypi]' > ~/.pypirc
       - run: echo "username = $PYPIUSR" >> ~/.pypirc
       - run: echo "password = $PYPIPWD" >> ~/.pypirc
+      - run: pipenv install
       - run: python setup.py sdist
       - run: python setup.py bdist_wheel --universal
       - run: twine upload dist/*
@@ -29,7 +30,7 @@ workflows:
   seq-flow:
     jobs:
       - build
-      - deploy:
+      - deliver:
           filters:
             branches:
               only:

@@ -1,4 +1,5 @@
-# Project Status:
+# Project Status
+
 | Branch | Master | Production |
 | ------ | :----: | :--------: |
 | CI Build Status | [![CircleCI](https://circleci.com/gh/omazhary/gitsherlock/tree/master.svg?style=svg)](https://circleci.com/gh/omazhary/gitsherlock/tree/master) | [![CircleCI](https://circleci.com/gh/omazhary/gitsherlock/tree/production.svg?style=svg)](https://circleci.com/gh/omazhary/gitsherlock/tree/production) |

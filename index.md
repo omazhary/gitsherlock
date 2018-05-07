@@ -1,3 +1,7 @@
+# Project Status:
+| Branch | Master | Production |
+| CI Build Status | [![CircleCI](https://circleci.com/gh/omazhary/gitsherlock/tree/master.svg?style=svg)](https://circleci.com/gh/omazhary/gitsherlock/tree/master) | [![CircleCI](https://circleci.com/gh/omazhary/gitsherlock/tree/production.svg?style=svg)](https://circleci.com/gh/omazhary/gitsherlock/tree/production) |
+
 # What is GitSherlock?
 
 GitSherlock is a way I came up with a while back to make my life easier when scraping data off the GitHub API.

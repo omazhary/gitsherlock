@@ -26,7 +26,7 @@ workflows:
   version: 2
   seq-flow:
     jobs:
-      - build
+      - build:
           filters:
             branches:
               only:

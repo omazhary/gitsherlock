@@ -12,7 +12,7 @@ jobs:
       - checkout
       - run: sudo pip install virtualenv pew pipenv
       - run: pipenv install
-  deploy:
+  deliver:
     working_directory: ~/gitsherlock
     docker:
       - image: circleci/python:3.6.1

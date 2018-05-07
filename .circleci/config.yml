@@ -21,6 +21,7 @@ jobs:
       - run: echo '[pypi]' > ~/.pypirc
       - run: echo "username = $PYPIUSR" >> ~/.pypirc
       - run: echo "password = $PYPIPWD" >> ~/.pypirc
+      - run: sudo pip install virtualenv pew pipenv
       - run: pipenv install
       - run: python setup.py sdist
       - run: python setup.py bdist_wheel --universal

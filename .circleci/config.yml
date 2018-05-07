@@ -1,4 +1,8 @@
 version: 2
+general:
+  branches:
+    ignore:
+      - gh-pages
 jobs:
   build:
     docker:
@@ -17,6 +21,9 @@ jobs:
       - run: echo '[pypi]' > ~/.pypirc
       - run: echo "username = $PYPIUSR" >> ~/.pypirc
       - run: echo "password = $PYPIPWD" >> ~/.pypirc
+      - run: python setup.py sdist
+      - run: python setup.py bdist_wheel --universal
+      - run: twine upload dist/*
 workflows:
   version: 2
   seq-flow:

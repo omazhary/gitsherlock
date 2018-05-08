@@ -1,11 +1,6 @@
 title: GitSherlock
 description: GitHub scraping made simple!!
-github: [metadata]
 encoding: UTF-8
-kramdown:
-  input: GFM
-  hard_wrap: false
-future: true
-jailed: false
+show_downloads: false
+google_analytics: UA-118902662-1
 theme: jekyll-theme-architect
-gfm_quirks: paragraph_end

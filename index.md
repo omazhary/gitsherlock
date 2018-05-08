@@ -6,15 +6,35 @@ What GitSherlock does is essentially the following:
 2. GitSherlock sends a request to the GitHub API on your behalf, and retrieves the data returned by the GitHub API.
 3. GitSherlock then formats the data in the format you've requested, and then returns that to you.
 
-## Requirements
+## Required External Libraries
 
 - [BeautifulSoup4](https://pypi.org/project/beautifulsoup4/)
 - [requests](https://pypi.org/project/requests/)
 
-# Usage
+# How do I use it?
 
 You can use GitSherlock in two main ways:
-1. The terminal/command line (depending on which OS you use)
+- The terminal/command line (depending on which OS you use)
     - As part of a shell script
     - As a standalone executable
-2. As a python module in one of your python scripts
+- As a python module in one of your python scripts
+
+Examples for both use cases are given below.
+
+## Usage Examples
+
+### Terminal/Command Line or Executable
+
+```bash
+gitsherlock --user <your_github_username> --token <your github_token> --endpoint <api_or_html_endpoint>
+```
+
+### Python Script
+
+```python
+from gitsherlock import GitSherlock
+
+scraper = GitSherlock(user=GITHUB_USER, token=GITHUB_TOKEN)
+scraper.query(endpoint)
+print(scraper.result)
+```

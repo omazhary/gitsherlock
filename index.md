@@ -15,8 +15,8 @@ What GitSherlock does is essentially the following:
 
 You can use GitSherlock in two main ways:
 - The terminal/command line (depending on which OS you use)
-    - As part of a shell script
-    - As a standalone executable
+  - As part of a shell script
+  - As a standalone executable
 - As a python module in one of your python scripts
 
 Examples for both use cases are given below.

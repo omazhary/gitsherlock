@@ -9,7 +9,7 @@ Project Status
 +--------+--------+------------+
 | Branch | Master | Production |
 +========+========+============+
-| CI Build Status | [![CircleCI](https://circleci.com/gh/omazhary/gitsherlock/tree/master.svg?style=svg)](https://circleci.com/gh/omazhary/gitsherlock/tree/master) | [![CircleCI](https://circleci.com/gh/omazhary/gitsherlock/tree/production.svg?style=svg)](https://circleci.com/gh/omazhary/gitsherlock/tree/production) |
+| CI Build Status | |master_ci| | |production_ci| |
 +--------+--------+------------+
 
 Requirements
@@ -17,3 +17,6 @@ Requirements
 
 - bs4
 - requests
+
+.. |master_ci| image:: https://circleci.com/gh/omazhary/gitsherlock/tree/master.svg?style=svg
+.. |production_ci| image:: https://circleci.com/gh/omazhary/gitsherlock/tree/production.svg?style=svg

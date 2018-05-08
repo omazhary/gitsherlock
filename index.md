@@ -14,20 +14,14 @@ What GitSherlock does is essentially the following:
 # How do I use it?
 
 You can use GitSherlock in two main ways:
+- As a python module in one of your python scripts
 - The terminal/command line (depending on which OS you use)
   - As part of a shell script
   - As a standalone executable
-- As a python module in one of your python scripts
 
 Examples for both use cases are given below.
 
 ## Usage Examples
-
-### Terminal/Command Line or Executable
-
-```bash
-gitsherlock --user <your_github_username> --token <your github_token> --endpoint <api_or_html_endpoint>
-```
 
 ### Python Script
 
@@ -37,4 +31,10 @@ from gitsherlock import GitSherlock
 scraper = GitSherlock(user=GITHUB_USER, token=GITHUB_TOKEN)
 scraper.query(endpoint)
 print(scraper.result)
+```
+
+### Terminal/Command Line or Executable
+
+```bash
+gitsherlock --user <your_github_username> --token <your github_token> --endpoint <api_or_html_endpoint>
 ```

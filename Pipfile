@@ -13,6 +13,6 @@ name = "pypi"
 
 argparse = "*"
 "bs4" = "*"
-requests = "*"
+requests = ">=2.20.0"
 twine = "*"
 wheel = "*"

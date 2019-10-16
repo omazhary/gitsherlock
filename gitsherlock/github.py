@@ -57,6 +57,7 @@ class Scraper:
         :return: The result in the requested format.
         """
 
+        result = None
         # Check if we need to cycle tokens:
         if self.requests == self.REQUEST_LIMIT:
             self.tokencounter = (self.tokencounter + 1) % len(self.tokenlist)
@@ -81,18 +82,19 @@ class Scraper:
             if data_type.lower() == 'std':
                 content = gh_json_result.content.decode('utf-8')
                 if content is not None and not content == '':
-                    self.result = json.loads(content)
+                    result = json.loads(content)
                 else:
-                    self.result = json.loads(
+                    result = json.loads(
                             '{"message": "No result returned"}'
                             )
             else:
-                self.result = gh_json_result.content
+                result = gh_json_result.content
         elif self.target == "WEB":
             gh_uri = "%s" % (gh_query)
             gh_result = requests.get(gh_uri)
             soup = BeautifulSoup(gh_result.text.encode("utf8"),
                                  'html.parser')
-            self.result = soup
+            result = soup
         self.requests += 1
         time.sleep(1)
+        return result

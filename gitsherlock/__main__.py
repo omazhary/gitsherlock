@@ -56,10 +56,10 @@ if args['params'] is not None:
 		sys.exit(1)
 
 scraper = github.Scraper(args['user'], args['token'], target=target)
-scraper.query(endpoint, parameters=parameters, method=method)
+result =  scraper.query(endpoint, parameters=parameters, method=method)
 
 if target == "WEB":
-	print(scraper.result)
+	print(result)
 
 if output == "JSON" and target == "API":
-	print(json.dumps(scraper.result))
+	print(json.dumps(result))

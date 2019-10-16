@@ -4,11 +4,11 @@ tools.
 """
 
 import argparse
-from bs4 import BeautifulSoup
 import json
 import requests
-import sys
 import time
+
+from bs4 import BeautifulSoup
 try:
     from urllib import urlencode
 except ImportError:

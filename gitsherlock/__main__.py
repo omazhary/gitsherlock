@@ -6,6 +6,8 @@ import argparse
 import github
 import json
 
+from sys import exit
+
 parser = argparse.ArgumentParser(
 		description="Query GitHub and BitBucket's online endpoints."
 		)
@@ -52,8 +54,7 @@ if args['params'] is not None:
 	try:
 		parameters = json.loads(args['params'])
 	except ValueError:
-		print('You have not provided a valid json string!!')
-		sys.exit(1)
+		exit('You have not provided a valid json string!!')
 
 scraper = github.Scraper(args['user'], args['token'], target=target)
 result =  scraper.query(endpoint, parameters=parameters, method=method)

@@ -3,6 +3,7 @@
 # This file acts as an entry point to the package.
 
 import argparse
+import bitbucket
 import github
 import json
 
@@ -14,12 +15,14 @@ parser = argparse.ArgumentParser(
 requiredArgs = parser.add_argument_group('required named arguments')
 requiredArgs.add_argument('--provider', metavar='v', type=str, required=True,
 					help='The repository provider [GITHUB|BITBUCKET].')
-requiredArgs.add_argument('--user', metavar='u', type=str, required=True,
-					help='Your username.')
-requiredArgs.add_argument('--token', metavar='t', type=str, required=True,
-					help='Your authentication token.')
 requiredArgs.add_argument('--endpoint', metavar='e', type=str, required=True,
 					help='The endpoint you want to query.')
+parser.add_argument('--user', metavar='u', type=str,
+					help='Your username.')
+parser.add_argument('--token', metavar='t', type=str,
+					help='Your authentication token.')
+parser.add_argument('--authfile', metavar='f', type=str,
+					help='The file where you store your credentials.')
 parser.add_argument('--method', metavar='m', type=str,
 					help='The HTTP method to use.')
 parser.add_argument('--output', metavar='o', type=str,
@@ -56,7 +59,12 @@ if args['params'] is not None:
 	except ValueError:
 		exit('You have not provided a valid json string!!')
 
-scraper = github.Scraper(args['user'], args['token'], target=target)
+scraper = None
+if args['provider'] == 'BITBUCKET':
+	scraper = bitbucket.Scraper(args['authfile'])
+elif args['provider'] == 'GITHUB':
+	scraper = github.Scraper(args['user'], args['authfile'], target=target)
+
 result =  scraper.query(endpoint, parameters=parameters, method=method)
 
 if target == "WEB":

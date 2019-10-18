@@ -2,3 +2,4 @@
 build/*
 dist/*
 gitsherlock.egg-info/*
+.idea/*

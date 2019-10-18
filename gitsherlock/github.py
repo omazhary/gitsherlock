@@ -23,28 +23,21 @@ class Scraper:
 
     REQUEST_LIMIT = 2400
 
-    def __init__(self, user, token=None, tokenfile=None, target="API"):
-        if token is None and tokenfile is None:
-            raise Exception("No token or token file provided!!")
+    def __init__(self, user, authFile=None, target="API"):
+        if authFile is None:
+            raise Exception("No authentication file provided!!")
         if target == "API":
             self.gh_request = "https://api.github.com/"
         elif target == "WEB":
             self.gh_request = "https://github.com/"
         self.parameters = dict()
         self.result = dict()
-        self.token = token
         self.user = user
         self.requests = 0
-        self.tokencounter = 0
         self.target = target
-        if tokenfile is not None:
-            with open(tokenfile) as f:
-                self.tokenlist = f.readlines()
-                self.tokenlist = [x.strip() for x in self.tokenlist]
-                self.token = self.tokenlist[self.tokencounter]
-        else:
-            self.tokenlist = []
-            self.tokenlist.append(self.token)
+        token = json.load(open(authFile))
+        self.user = token['user']
+        self.token = token['token']
 
     def query(self, endpoint, parameters=dict(), method="GET",
               data_type="std"):
@@ -58,12 +51,6 @@ class Scraper:
         """
 
         result = None
-        # Check if we need to cycle tokens:
-        if self.requests == self.REQUEST_LIMIT:
-            self.tokencounter = (self.tokencounter + 1) % len(self.tokenlist)
-            self.token = self.tokenlist[self.tokencounter]
-            print("## Cycling to token #%d..." % self.tokencounter)
-            self.requests = 0
         # Perform the request:
         gh_query = self.gh_request + endpoint
         header_type = ''

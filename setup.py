@@ -26,7 +26,7 @@ setup(
             'Topic :: Scientific/Engineering :: Information Analysis',
         ],
         keywords='data collection scrape research',
-        packages=find_packages(exclude=['contrib', 'docs', 'tests']),
+        packages=['gitsherlock'],
         install_requires=[
             'argparse',
             'bs4',
@@ -38,7 +38,7 @@ setup(
         scripts=[],
         entry_points={
             'console_scripts': [
-                'gitsherlock=gitsherlock:main',
+                'gitsherlock=gitsherlock.__main__:main',
             ],
         },
         zip_safe=False
